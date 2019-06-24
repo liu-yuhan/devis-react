@@ -49,7 +49,6 @@ class Devis_Main extends Component {
     } else {
       const clientInfo = devisDetail.deal;
       const companyInfo = devisDetail.company;
-      const bill = devisDetail.sections[0].lots;
       return (
         <Container>
           <Row>
@@ -90,6 +89,29 @@ class Devis_Main extends Component {
               <h4>Prix Total TTC: {devisDetail.prixTotalTTC} </h4>
             </Col>
           </Row>
+          <DropdownButton
+            id="dropdown-basic-button"
+            title="Détail par métier: "
+          >
+            <Dropdown.Item href="#/demolition">
+              Démolition - préparation
+            </Dropdown.Item>
+            <Dropdown.Item href="#/serrurerie">
+              Serrurerie - métallerie
+            </Dropdown.Item>
+            <Dropdown.Item href="#/platrerie">
+              Plâtrerie - cloisonnement
+            </Dropdown.Item>
+            <Dropdown.Item href="#/plomberie ">
+              Plomberie - chauffage
+            </Dropdown.Item>
+            <Dropdown.Item href="#/electricite">Électricité</Dropdown.Item>
+            <Dropdown.Item href="#/menuiseries_intrrieures">
+              Menuiseries intérieures
+            </Dropdown.Item>
+            <Dropdown.Item href="#/peinture">peinture</Dropdown.Item>
+            <Dropdown.Item href="#/cuisine">cuisine</Dropdown.Item>
+          </DropdownButton>
         </Container>
       );
     }
