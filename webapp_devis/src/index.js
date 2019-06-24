@@ -4,15 +4,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from "./serviceWorker";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Devis_Main from "./container/Devis/Main";
-import Devis_Démolition from "./container/Devis/Démolition";
-
+import Devis_Démolition from "./container/Devis/Demolition";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Devis_Main} />
-      <Route exact path="/Démolition" component={Devis_Démolition} />
-    </Switch>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Devis_Main} />
+        <Route exact path="/demolition" component={Devis_Démolition} />
+      </Switch>
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 

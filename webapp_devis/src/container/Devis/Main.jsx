@@ -1,6 +1,15 @@
-import Devis_header from "../../component/devis_header";
+//import Devis_header from "../../component/devis_header";
 import React, { Component } from "react";
-import { Table, Container } from "react-bootstrap";
+import { reqDevis } from "../../api_connection";
+import {
+  Row,
+  Col,
+  Container,
+  DropdownButton,
+  Dropdown,
+  Table,
+  Image
+} from "react-bootstrap";
 class Devis_Main extends Component {
   constructor(props) {
     super();
@@ -9,36 +18,81 @@ class Devis_Main extends Component {
     };
   }
 
+  componentDidMount() {
+    reqDevis()
+      .then(response => {
+        // console.log('Response', response);
+        this.setState({
+          detail: response.data
+        });
+        console.log(this.state.detail.sections[0]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
-    return (
-      <>
-        <Devis_header />
+    const devisDetail = this.state.detail;
+    if (!devisDetail) {
+      return (
+        <>
+          <Container>
+            <Row>
+              <Col>
+                <Image src="loading.jpg" alt="loading" fluid />
+              </Col>
+            </Row>
+          </Container>
+        </>
+      );
+    } else {
+      const clientInfo = devisDetail.deal;
+      const companyInfo = devisDetail.company;
+      const bill = devisDetail.sections[0].lots;
+      return (
         <Container>
-          <Table striped bordered hover className="mt-3">
-            <thead>
-              <tr>
-                <th>Designation</th>
-                <th>Unité</th>
-                <th>Quantité</th>
-                <th>Prixunitaire</th>
-                <th>Total HT</th>
-              </tr>
-            </thead>
-            <tbody>
-              <h6>Salle d'eau </h6>
-              <tr />
-              <h6>Cuisine </h6>
-              <tr />
-              <h6>Salon </h6>
-              <tr />
-              <h6>Chambre </h6>
-              <tr />
-            </tbody>
-          </Table>
+          <Row>
+            <Col md={{ span: 4, offset: 7 }} className="mt-3">
+              <h5>Devis: No. Exemple </h5>
+              <h5>Date : {devisDetail.date} </h5>
+              <h5>Devis valable:{devisDetail.dureeValidite} </h5>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 4, offset: 1 }}>
+              <h5>company: {companyInfo.name} </h5>
+              <h5>address: {companyInfo.address} </h5>
+              <h5>
+                {companyInfo.postalCode}, {companyInfo.city}
+              </h5>
+              <h5>Mail:</h5>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 4, offset: 7 }}>
+              <h5>ClientName:{clientInfo.customerName} </h5>
+              <h5>Address: {clientInfo.billingAddress.address} </h5>
+              <h5>
+                {clientInfo.billingAddress.postalCode},
+                {clientInfo.billingAddress.city}{" "}
+              </h5>
+            </Col>
+          </Row>
+          <Row className="mt-3 ">
+            <Col md={3} className=" mx-auto">
+              <h4>Prix Total HT: {devisDetail.prixTotalHT} </h4>
+            </Col>
+            <Col md={3} className=" mx-auto">
+              <h4>TVA 10%: {devisDetail.montantsTVA[0].montant} </h4>
+            </Col>
+            <Col md={3} className="mx-auto">
+              <h4>Prix Total TTC: {devisDetail.prixTotalTTC} </h4>
+            </Col>
+          </Row>
         </Container>
-      </>
-    );
+      );
+    }
   }
 }
-
 export default Devis_Main;

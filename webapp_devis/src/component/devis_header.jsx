@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col, Container, DropdownButton, Dropdown } from "react-bootstrap";
-import { reqDevis } from "../api_connection";
 
 class Devis_Header extends Component {
   render() {
@@ -23,7 +22,7 @@ class Devis_Header extends Component {
         </Row>
         <Row>
           <Col md={{ span: 4, offset: 7 }}>
-            <h5>ClientName </h5>
+            <h5>ClientName:</h5>
             <h5>Address </h5>
             <h5>PostalCode</h5>
           </Col>
@@ -43,7 +42,7 @@ class Devis_Header extends Component {
           <Dropdown.Item href="#/Démolition">
             Démolition - préparation
           </Dropdown.Item>
-          <Dropdown.Item href="#/action-2">
+          <Dropdown.Item href="#/action-3">
             Serrurerie - métallerie
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3">
