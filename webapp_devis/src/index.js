@@ -6,6 +6,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Devis_demolition from "./container/Devis/Demolition";
 import Devis_serrurerie from "./container/Devis/Serrurerie";
 import Devis_platrerie from "./container/Devis/Platrerie";
+import Devis_plomberie from "./container/Devis/Plomberie";
 import Devis_Main from "./container/Devis/Main";
 import store from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route exact path="/demolition" component={Devis_demolition} />
         <Route exact path="/serrurerie" component={Devis_serrurerie} />
         <Route exact path="/platrerie" component={Devis_platrerie} />
+        <Route exact path="/plomberie" component={Devis_plomberie} />
       </Switch>
     </Router>
   </Provider>,

@@ -97,7 +97,7 @@ class Devis_Main extends Component {
             <Dropdown.Item href="#/platrerie">
               Plâtrerie - cloisonnement
             </Dropdown.Item>
-            <Dropdown.Item href="#/plomberie-chauffage">
+            <Dropdown.Item href="#/plomberie">
               Plomberie - chauffage
             </Dropdown.Item>
             <Dropdown.Item href="#/electricite">Électricité</Dropdown.Item>
