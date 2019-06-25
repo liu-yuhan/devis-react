@@ -5,7 +5,7 @@ import Main from "./Main";
 import { connect } from "react-redux";
 import { getDevis } from "../../redux/action";
 
-class Devis_Demolition extends Component {
+class Devis_demolition extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,4 +162,4 @@ class Devis_Demolition extends Component {
 export default connect(
   state => ({ devis: state.devis }),
   { getDevis }
-)(Devis_Demolition);
+)(Devis_demolition);

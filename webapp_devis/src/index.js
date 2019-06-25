@@ -3,8 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import Devis_Demolition from "./container/Devis/Demolition";
+import Devis_demolition from "./container/Devis/Demolition";
 import Devis_serrurerie from "./container/Devis/Serrurerie";
+import Devis_platrerie from "./container/Devis/Platrerie";
 import Devis_Main from "./container/Devis/Main";
 import store from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
@@ -13,8 +14,9 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={Devis_Main} />
-        <Route exact path="/demolition" component={Devis_Demolition} />
+        <Route exact path="/demolition" component={Devis_demolition} />
         <Route exact path="/serrurerie" component={Devis_serrurerie} />
+        <Route exact path="/platrerie" component={Devis_platrerie} />
       </Switch>
     </Router>
   </Provider>,
