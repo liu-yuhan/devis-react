@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { reqDevis } from "../../api_connection";
 import { connect } from "react-redux";
 import { getDevis } from "../../redux/action";
 import {
@@ -8,7 +7,8 @@ import {
   Container,
   Image,
   Dropdown,
-  DropdownButton
+  DropdownButton,
+  Button
 } from "react-bootstrap";
 class Devis_Main extends Component {
   constructor(props) {
@@ -40,20 +40,20 @@ class Devis_Main extends Component {
         <Container>
           <Row>
             {devisDetail ? (
-              <Col md={{ span: 4, offset: 7 }} className="mt-3">
+              <Col md={{ span: 4, offset: 8 }} className="mt-3">
                 <h5>Devis: No. Exemple </h5>
-                <h5>Date : {devisDetail.date} </h5>
-                <h5>Devis valable:{devisDetail.dureeValidite} </h5>
+                <h5>Date: {devisDetail.date} </h5>
+                <h5>Devis valable: {devisDetail.dureeValidite} </h5>
               </Col>
             ) : null}
           </Row>
           <Row>
             {companyInfo ? (
-              <Col md={{ span: 4, offset: 1 }}>
-                <h5>company: {companyInfo.name} </h5>
-                <h5>address: {companyInfo.address} </h5>
+              <Col md={{ span: 4 }} className="ml-3">
+                <h5>{companyInfo.name} </h5>
+                <h5>{companyInfo.address} </h5>
                 <h5>
-                  {companyInfo.postalCode}, {companyInfo.city}
+                  {companyInfo.postalCode} {companyInfo.city}
                 </h5>
                 <h5>Mail:</h5>
               </Col>
@@ -61,32 +61,35 @@ class Devis_Main extends Component {
           </Row>
           <Row>
             {clientInfo ? (
-              <Col md={{ span: 4, offset: 7 }}>
-                <h5>ClientName:{clientInfo.customerName} </h5>
-                <h5>Address: {clientInfo.billingAddress.address} </h5>
+              <Col md={{ span: 4, offset: 8 }}>
+                <h5>{clientInfo.customerName} </h5>
+                <h5>{clientInfo.billingAddress.address} </h5>
                 <h5>
-                  {clientInfo.billingAddress.postalCode},
-                  {clientInfo.billingAddress.city}{" "}
+                  {clientInfo.billingAddress.postalCode} &nbsp;
+                  {clientInfo.billingAddress.city}
                 </h5>
               </Col>
             ) : null}
           </Row>
           <Row className="mt-3 ">
             <Col md={3} className=" mx-auto">
-              <h4>Prix Total HT: {devisDetail.prixTotalHT} </h4>
+              <h4>Prix Total HT: {devisDetail.prixTotalHT} €</h4>
             </Col>
             <Col md={3} className=" mx-auto">
               {devisDetail.montantsTVA ? (
-                <h4>TVA 10%: {devisDetail.montantsTVA[0].montant} </h4>
+                <h4>TVA 10%: {devisDetail.montantsTVA[0].montant} €</h4>
               ) : null}
             </Col>
-            <Col md={3} className="mx-auto">
-              <h4>Prix Total TTC: {devisDetail.prixTotalTTC} </h4>
+            <Col md={4} className="mx-auto">
+              <h4>Prix Total TTC: {devisDetail.prixTotalTTC} € </h4>
             </Col>
           </Row>
           <DropdownButton
             id="dropdown-basic-button"
-            title="Détail par métier: "
+            title="Détail par métier "
+            size="lg"
+            className="my-3"
+            class="dropdown-menu dropdown-menu-right"
           >
             <Dropdown.Item href="#/demolition">
               Démolition - préparation

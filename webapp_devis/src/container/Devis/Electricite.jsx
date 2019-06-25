@@ -3,6 +3,7 @@ import { Table, Container } from "react-bootstrap";
 import Main from "./Main";
 import { connect } from "react-redux";
 import { getDevis } from "../../redux/action";
+import Devis_Header from "../../component/devis_header";
 
 class Devis_electricite extends Component {
   constructor(props) {
@@ -120,15 +121,7 @@ class Devis_electricite extends Component {
         <Main />
         <Container>
           <Table striped bordered hover className="mt-3">
-            <thead>
-              <tr>
-                <th>Designation</th>
-                <th>Unité</th>
-                <th>Quantité</th>
-                <th>Prixunitaire</th>
-                <th>Total HT</th>
-              </tr>
-            </thead>
+            <Devis_Header />
             <tbody>
               <tr>
                 <td>Salle d'eau</td>
