@@ -101,10 +101,13 @@ class Devis_Main extends Component {
               Plomberie - chauffage
             </Dropdown.Item>
             <Dropdown.Item href="#/electricite">Électricité</Dropdown.Item>
-            <Dropdown.Item href="#/Menuiseries-intérieures">
+            <Dropdown.Item href="#/revetements">
+              Revêtements de sols et muraux
+            </Dropdown.Item>
+            <Dropdown.Item href="#/menuiseries">
               Menuiseries intérieures
             </Dropdown.Item>
-            <Dropdown.Item href="#/action-1">Peinture</Dropdown.Item>
+            <Dropdown.Item href="#/peinture">Peinture</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Cuisine</Dropdown.Item>
           </DropdownButton>
         </Container>
