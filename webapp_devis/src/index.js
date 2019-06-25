@@ -10,6 +10,8 @@ import Devis_plomberie from "./container/Devis/Plomberie";
 import Devis_electricite from "./container/Devis/Electricite";
 import Devis_revetements from "./container/Devis/Revetements";
 import Devis_menuiseries from "./container/Devis/Menuiseries";
+import Devis_peinture from "./container/Devis/Peinture";
+import Devis_cuisine from "./container/Devis/Cuisine";
 import Devis_Main from "./container/Devis/Main";
 import store from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
@@ -25,6 +27,8 @@ ReactDOM.render(
         <Route exact path="/electricite" component={Devis_electricite} />
         <Route exact path="/revetements" component={Devis_revetements} />
         <Route exact path="/menuiseries" component={Devis_menuiseries} />
+        <Route exact path="/peinture" component={Devis_peinture} />
+        <Route exact path="/cuisine" component={Devis_cuisine} />
       </Switch>
     </Router>
   </Provider>,

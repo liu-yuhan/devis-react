@@ -108,7 +108,7 @@ class Devis_Main extends Component {
               Menuiseries intérieures
             </Dropdown.Item>
             <Dropdown.Item href="#/peinture">Peinture</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Cuisine</Dropdown.Item>
+            <Dropdown.Item href="#/cuisine">Cuisine</Dropdown.Item>
           </DropdownButton>
         </Container>
       );
