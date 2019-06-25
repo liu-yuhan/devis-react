@@ -19,7 +19,6 @@ class Devis_Demolition extends Component {
     var salle_deau_items;
     if (devis_all) {
       var devis_demolition = devis_all[0].lots[0].lignes;
-      console.log(devis_demolition);
       salle_deau_items = devis_demolition.map(devis_demolition =>
         devis_demolition.locationsDetails.locations[0] &&
         devis_demolition.locationsDetails.locations[0].uuid ===
@@ -40,7 +39,6 @@ class Devis_Demolition extends Component {
     var cuisine_items;
     if (devis_all) {
       var devis_demolition = devis_all[0].lots[0].lignes;
-      console.log(devis_demolition);
       cuisine_items = devis_demolition.map(devis_demolition =>
         devis_demolition.locationsDetails.locations[0] &&
         devis_demolition.locationsDetails.locations[0].uuid ===
@@ -61,7 +59,6 @@ class Devis_Demolition extends Component {
     var salon_items;
     if (devis_all) {
       var devis_demolition = devis_all[0].lots[0].lignes;
-      console.log(devis_demolition);
       salon_items = devis_demolition.map(devis_demolition =>
         devis_demolition.locationsDetails.locations[0] &&
         devis_demolition.locationsDetails.locations[0].uuid ===
@@ -83,7 +80,6 @@ class Devis_Demolition extends Component {
     var chambre_items;
     if (devis_all) {
       var devis_demolition = devis_all[0].lots[0].lignes;
-      console.log(devis_demolition);
       chambre_items = devis_demolition.map(devis_demolition =>
         devis_demolition.locationsDetails.locations[0] &&
         devis_demolition.locationsDetails.locations[0].uuid ===
@@ -104,7 +100,6 @@ class Devis_Demolition extends Component {
     var autres_prestations;
     if (devis_all) {
       var devis_demolition = devis_all[0].lots[0].lignes;
-      console.log(devis_demolition);
       autres_prestations = devis_demolition.map(devis_demolition =>
         !devis_demolition.locationsDetails.locations[0] ? (
           <tr

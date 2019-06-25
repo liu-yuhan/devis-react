@@ -1,39 +1,26 @@
-//import Devis_header from "../../component/devis_header";
 import React, { Component } from "react";
 import { reqDevis } from "../../api_connection";
+import { connect } from "react-redux";
+import { getDevis } from "../../redux/action";
 import {
   Row,
   Col,
   Container,
-  DropdownButton,
+  Image,
   Dropdown,
-  Table,
-  Image
+  DropdownButton
 } from "react-bootstrap";
 class Devis_Main extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       detail: ""
     };
-  }
-
-  componentDidMount() {
-    reqDevis()
-      .then(response => {
-        // console.log('Response', response);
-        this.setState({
-          detail: response.data
-        });
-        console.log(this.state.detail.sections[0]);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.getDevis(this.state);
   }
 
   render() {
-    const devisDetail = this.state.detail;
+    const devisDetail = this.props.devis;
     if (!devisDetail) {
       return (
         <>
@@ -52,38 +39,46 @@ class Devis_Main extends Component {
       return (
         <Container>
           <Row>
-            <Col md={{ span: 4, offset: 7 }} className="mt-3">
-              <h5>Devis: No. Exemple </h5>
-              <h5>Date : {devisDetail.date} </h5>
-              <h5>Devis valable:{devisDetail.dureeValidite} </h5>
-            </Col>
+            {devisDetail ? (
+              <Col md={{ span: 4, offset: 7 }} className="mt-3">
+                <h5>Devis: No. Exemple </h5>
+                <h5>Date : {devisDetail.date} </h5>
+                <h5>Devis valable:{devisDetail.dureeValidite} </h5>
+              </Col>
+            ) : null}
           </Row>
           <Row>
-            <Col md={{ span: 4, offset: 1 }}>
-              <h5>company: {companyInfo.name} </h5>
-              <h5>address: {companyInfo.address} </h5>
-              <h5>
-                {companyInfo.postalCode}, {companyInfo.city}
-              </h5>
-              <h5>Mail:</h5>
-            </Col>
+            {companyInfo ? (
+              <Col md={{ span: 4, offset: 1 }}>
+                <h5>company: {companyInfo.name} </h5>
+                <h5>address: {companyInfo.address} </h5>
+                <h5>
+                  {companyInfo.postalCode}, {companyInfo.city}
+                </h5>
+                <h5>Mail:</h5>
+              </Col>
+            ) : null}
           </Row>
           <Row>
-            <Col md={{ span: 4, offset: 7 }}>
-              <h5>ClientName:{clientInfo.customerName} </h5>
-              <h5>Address: {clientInfo.billingAddress.address} </h5>
-              <h5>
-                {clientInfo.billingAddress.postalCode},
-                {clientInfo.billingAddress.city}{" "}
-              </h5>
-            </Col>
+            {clientInfo ? (
+              <Col md={{ span: 4, offset: 7 }}>
+                <h5>ClientName:{clientInfo.customerName} </h5>
+                <h5>Address: {clientInfo.billingAddress.address} </h5>
+                <h5>
+                  {clientInfo.billingAddress.postalCode},
+                  {clientInfo.billingAddress.city}{" "}
+                </h5>
+              </Col>
+            ) : null}
           </Row>
           <Row className="mt-3 ">
             <Col md={3} className=" mx-auto">
               <h4>Prix Total HT: {devisDetail.prixTotalHT} </h4>
             </Col>
             <Col md={3} className=" mx-auto">
-              <h4>TVA 10%: {devisDetail.montantsTVA[0].montant} </h4>
+              {devisDetail.montantsTVA ? (
+                <h4>TVA 10%: {devisDetail.montantsTVA[0].montant} </h4>
+              ) : null}
             </Col>
             <Col md={3} className="mx-auto">
               <h4>Prix Total TTC: {devisDetail.prixTotalTTC} </h4>
@@ -99,22 +94,26 @@ class Devis_Main extends Component {
             <Dropdown.Item href="#/serrurerie">
               Serrurerie - métallerie
             </Dropdown.Item>
-            <Dropdown.Item href="#/platrerie">
+            <Dropdown.Item href="#/platrerie-cloisonnement ">
               Plâtrerie - cloisonnement
             </Dropdown.Item>
-            <Dropdown.Item href="#/plomberie ">
+            <Dropdown.Item href="#/plomberie-chauffage ">
               Plomberie - chauffage
             </Dropdown.Item>
             <Dropdown.Item href="#/electricite">Électricité</Dropdown.Item>
-            <Dropdown.Item href="#/menuiseries_intrrieures">
+            <Dropdown.Item href="#/Menuiseries-intérieures">
               Menuiseries intérieures
             </Dropdown.Item>
-            <Dropdown.Item href="#/peinture">peinture</Dropdown.Item>
-            <Dropdown.Item href="#/cuisine">cuisine</Dropdown.Item>
+            <Dropdown.Item href="#/action-1">Peinture</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Cuisine</Dropdown.Item>
           </DropdownButton>
         </Container>
       );
     }
   }
 }
-export default Devis_Main;
+
+export default connect(
+  state => ({ devis: state.devis }),
+  { getDevis }
+)(Devis_Main);
