@@ -12,8 +12,12 @@ The application is using Redux as state manager, the configuration is in /src/re
 
 Correct the "Quantité" in table, it should display the "locations[n].quantite",
 but it is displaying "lots[n].quantite" for now.
+
 So as "Total HT", it should be "locations[n].quantite \* Prix unitaire",
 but not "lots[n].prixHT".
+
 Display N/A when there is no element in this location.
-Browse on a single route
+
+Browse on a single route.
+
 Add a price total calculation for each location in each sub-estimate.
